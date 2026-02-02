@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="LLM_IA_pilotant_TDHC.png" />
+    <File Path="LLM_IA_pilotant_TDHC.txt" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="TDMCPApp/TDMCPApp.csproj" />
+</Solution>

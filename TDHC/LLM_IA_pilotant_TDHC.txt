@@ -1,0 +1,30 @@
+title LLM (IA) pilotant TDHC
+
+User->LLM: Prompt
+note over LLM
+Le LLM pourra être Claude Desktop/Code, etc...
+Utilisation possible de Docker MCP Toolkit
+end note
+LLM->TDMCP: Call (JSONRPC)
+note over TDMCP
+Utilise le protocole MCP
+pour piloter TDHC via
+des tools, resources, prompts
+Tech : Streamed http+JsonRpc
+end note
+TDMCP->TDHC_API: Call (SOAP)
+note over TDHC_API
+SOAP API in IIS Server
+Tech : http+SOAP/XML
+end note
+TDHC_API->Database: Command/Query
+note over Database
+Sécurité : vigilance sur les
+données échangées et les secrets
+end note
+Database-->TDHC_API:
+TDHC_API-->TDMCP:
+TDMCP-->LLM:
+LLM-->User:
+
+
