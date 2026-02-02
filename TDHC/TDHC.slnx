@@ -4,5 +4,6 @@
     <File Path="LLM_IA_pilotant_TDHC.txt" />
     <File Path="README.md" />
   </Folder>
+  <Project Path="TD.PatientManagement.SOAPClient/TD.PatientManagement.SOAPClient.csproj" />
   <Project Path="TDMCPApp/TDMCPApp.csproj" />
 </Solution>
