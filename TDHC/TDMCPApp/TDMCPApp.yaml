@@ -1,0 +1,8 @@
+﻿registry:
+  tdmcpapp:
+    description: "Serveur MCP pour manipuler le produit TDHC gérant l'histo-cytologie"
+    image: "tdmcpapp:latest"
+    command: ["dotnet", "TDMCPApp.dll"]
+    config:
+      - name: REMOTE_API_BASEURL
+        value: "http://api:8080"

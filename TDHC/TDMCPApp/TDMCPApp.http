@@ -1,6 +1,49 @@
-@TDMCPApp_HostAddress = http://localhost:5141
+@baseUrl = https://localhost:7228/mcp
 
-GET {{TDMCPApp_HostAddress}}/weatherforecast/
-Accept: application/json
+### 1) Créer une session MCP (Streamable HTTP)
+# Beaucoup d’implémentations renvoient l’ID de session dans la réponse (header Mcp-Session-Id)
+POST {{baseUrl}}
+Accept: application/json, text/event-stream
+Content-Type: application/json
 
-###
+{
+  "jsonrpc": "2.0",
+  "id": "init-1",
+  "method": "tools/list",
+  "params": {}
+}
+
+### 2) Lister les tools (en réutilisant la session)
+# Mets ici l’ID de session récupéré dans la réponse précédente si ton serveur l’exige.
+#@sessionId = 
+
+POST {{baseUrl}}
+Accept: application/json, text/event-stream
+Content-Type: application/json
+#Mcp-Session-Id: {{sessionId}}
+
+{
+  "jsonrpc": "2.0",
+  "id": "tools-list-1",
+  "method": "tools/list",
+  "params": {}
+}
+
+### 3) Appeler un tool (exemple)
+# Remplace "weather" par le nom exact retourné dans tools/list
+POST {{baseUrl}}
+Accept: application/json, text/event-stream
+Content-Type: application/json
+#Mcp-Session-Id: {{sessionId}}
+
+{
+  "jsonrpc": "2.0",
+  "id": "ping-1",
+  "method": "tools/call",
+  "params": {
+    "name": "ping",
+    "arguments": {
+      "message": "PING"
+    }
+  }
+}
