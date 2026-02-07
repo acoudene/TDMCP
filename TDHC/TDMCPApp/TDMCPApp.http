@@ -30,7 +30,6 @@ Content-Type: application/json
 }
 
 ### 3) Appeler un tool (exemple)
-# Remplace "weather" par le nom exact retourné dans tools/list
 POST {{baseUrl}}
 Accept: application/json, text/event-stream
 Content-Type: application/json
@@ -38,12 +37,17 @@ Content-Type: application/json
 
 {
   "jsonrpc": "2.0",
-  "id": "ping-1",
+  "id": "search_patient-1",
   "method": "tools/call",
   "params": {
-    "name": "ping",
+    "name": "search_patient",
     "arguments": {
-      "message": "PING"
+      "searchCriteria": {
+        "Demographic": {
+          "Name": "DOE",
+          "FirstName": "JOHN"
+        }
+      }
     }
   }
 }

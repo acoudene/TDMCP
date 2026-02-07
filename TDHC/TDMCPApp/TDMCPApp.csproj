@@ -25,4 +25,8 @@
     <Folder Include="Prompts\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TD.PatientManagement.SOAPClient\TD.PatientManagement.SOAPClient.csproj" />
+  </ItemGroup>
+
 </Project>

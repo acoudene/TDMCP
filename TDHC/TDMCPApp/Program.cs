@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddMcpServer()
     .WithHttpTransport()
     .WithStdioServerTransport()
-    .WithTools<PingTool>();
+    .WithTools<PatientManagementTool>();
 
 builder.Services.AddOpenTelemetry()
     .WithTracing(b => b.AddSource("*")
