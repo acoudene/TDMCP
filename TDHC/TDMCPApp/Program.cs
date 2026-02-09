@@ -3,7 +3,8 @@ using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
 using TDMCPApp.Tools;
 
-var useHttp = args.Contains("--http");
+bool useHttp = args.Contains("--http");
+bool useStateless = args.Contains("--stateless");
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +14,16 @@ builder.Services.AddMcpServer()
 
 if (useHttp)
 {
-  builder.Services.AddMcpServer()
+  if (useStateless)
+  {
+    builder.Services.AddMcpServer()
       .WithHttpTransport(o => o.Stateless = true);
+  }
+  else
+  {
+    builder.Services.AddMcpServer()
+        .WithHttpTransport();
+  }
 }
 else
 {
@@ -22,15 +31,15 @@ else
       .WithStdioServerTransport();
 }
 
-builder.Services.AddOpenTelemetry()
-    .WithTracing(b => b.AddSource("*")
-        .AddAspNetCoreInstrumentation()
-        .AddHttpClientInstrumentation())
-    .WithMetrics(b => b.AddMeter("*")
-        .AddAspNetCoreInstrumentation()
-        .AddHttpClientInstrumentation())
-    .WithLogging()
-    .UseOtlpExporter();
+//builder.Services.AddOpenTelemetry()
+//    .WithTracing(b => b.AddSource("*")
+//        .AddAspNetCoreInstrumentation()
+//        .AddHttpClientInstrumentation())
+//    .WithMetrics(b => b.AddMeter("*")
+//        .AddAspNetCoreInstrumentation()
+//        .AddHttpClientInstrumentation())
+//    .WithLogging()
+//    .UseOtlpExporter();
 
 var app = builder.Build();
 

@@ -10,6 +10,8 @@ Fournir un exemple de manipulation de fonctionnalités TDHC à travers l'usage d'u
 
 ## Claude Desktop Windows
 
+### En stdio
+
 Ouvrir `%AppData%\Roaming\Claude\claude_desktop_config.json`
 Puis ajouter : 
 ```
@@ -25,6 +27,20 @@ Puis ajouter :
       }
     }
 }
+```
+
+## Claude Code
+
+En SSE :
+
+```powershell 
+claude mcp add --transport sse tdmcp-sse https://localhost:7228/mcp/sse
+```
+
+Vérification :
+
+```
+curl -vk https://localhost:7228/mcp/sse
 ```
 
 # Développement
