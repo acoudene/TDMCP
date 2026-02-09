@@ -17,6 +17,13 @@
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7228;http://localhost:5141"
     },
+    "stdio": {
+      "commandName": "Project",      
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "dotnetRunMessages": true,      
+    },
     "Container (Dockerfile)": {
       "commandName": "Docker",
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",

@@ -27,6 +27,7 @@ if (useHttp)
 }
 else
 {
+  builder.Logging.ClearProviders(); // To avoid bad response in stdio
   builder.Services.AddMcpServer()
       .WithStdioServerTransport();
 }

@@ -40,7 +40,7 @@ Content-Type: application/json
   "id": "search_patient-1",
   "method": "tools/call",
   "params": {
-    "name": "search_patient",
+    "name": "SearchPatient",
     "arguments": {
       "searchCriteria": {
         "Demographic": {
