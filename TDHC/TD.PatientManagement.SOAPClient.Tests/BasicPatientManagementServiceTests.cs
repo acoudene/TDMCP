@@ -363,29 +363,7 @@ public class BasicPatientManagementServiceTests : IDisposable
   {
     // Arrange
     var newPatient = new PatientDTO
-    {
-      Identifier = new PatientIdentifierDTO
-      {
-        IntNumber = "123",
-        PatientNumber = "123",
-        BenNumber = "123",
-        PatientId = 123
-      },
-      Location = new LocationIdentifierDTO
-      {
-        Code = "D AB"
-      },
-      Prescriber = new PrescriberIdentifierDTO
-      {
-        Code = "D AB"
-      },
-      Hospitalization = new PatientVisitDTO
-      {
-        Identifier = new PatientVisitIdentifierDTO
-        {
-          HospitalizationNumber = "123"
-        }
-      },
+    {      
       Demographic = new PatientDemographicDTO
       {
         Name = TestConfiguration.TestPatientData.Name,
