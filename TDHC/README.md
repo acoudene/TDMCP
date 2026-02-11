@@ -93,3 +93,28 @@ docker mcp catalog show anthony_catalog
 ```
 docker mcp server list
 ```
+
+# Cas serveur WCF Data Services OData V3
+
+```
+dotnet add package Microsoft.OData.Client --version 7.*
+```
+
+
+## A voir
+
+### Génération avec Simple.OData.Client
+
+A documenter.
+
+### Génération avec Microsoft.OData.Client
+
+Note : installation .Net 6 peut-être nécessaire... En plus des SDKs déjà installés.
+
+```
+dotnet tool install --global Microsoft.OData.Cli
+```
+
+```
+odata-cli generate --metadataUri https://tdhc-app-dev-2.technidata.net:38431/TDHC9XACE/Technical/TDDatabaseService.svc/$metadata --outputDir ODataClient  --namespace TDDatabaseService.OData
+```

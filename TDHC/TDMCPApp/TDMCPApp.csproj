@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TD.PatientManagement.SOAPClient\TD.PatientManagement.SOAPClient.csproj" />
+    <ProjectReference Include="..\TD.Technical.ODataClient\TD.Technical.ODataClient.csproj" />
   </ItemGroup>
 
 </Project>

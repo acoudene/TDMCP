@@ -364,19 +364,13 @@ public class BasicPatientManagementServiceTests : IDisposable
     // Arrange
     var newPatient = new PatientDTO
     {      
+      Identifier = new PatientIdentifierDTO(),    
       Demographic = new PatientDemographicDTO
       {
         Name = TestConfiguration.TestPatientData.Name,
         FirstName = TestConfiguration.TestPatientData.FirstName,
         BirthDate = TestConfiguration.TestPatientData.BirthDate,
         Sex = TestConfiguration.TestPatientData.Sex
-      },
-      Address = new PatientAddressDTO
-      {
-        Address1 = TestConfiguration.TestPatientData.Street1,        
-        City = TestConfiguration.TestPatientData.City,
-        PostalCode = TestConfiguration.TestPatientData.ZipCode,
-        Country = TestConfiguration.TestPatientData.Country
       }
     };
 
