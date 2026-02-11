@@ -1,6 +1,3 @@
-using OpenTelemetry;
-using OpenTelemetry.Metrics;
-using OpenTelemetry.Trace;
 using TDMCPApp.Tools;
 
 bool useHttp = args.Contains("--http");
@@ -10,7 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddMcpServer()
-    .WithTools<PatientManagementTool>();
+    .WithTools<PatientManagementTool>()
+    .WithTools<TDDatabaseTool>();
 
 if (useHttp)
 {
