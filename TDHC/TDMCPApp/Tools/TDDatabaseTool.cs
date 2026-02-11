@@ -20,8 +20,7 @@ public sealed class TDDatabaseTool
   public IReadOnlyList<string> ListEntitySets() => _entitySets;
 
   [McpServerTool, Description("Runs an OData query against an entity set and returns the results as JSON. Supports $filter, $select, $orderby, $top, $skip, and $expand.")]
-  public async Task<string> Query(
-      string serviceRootUrl,
+  public async Task<string> QueryAsync(
       string entitySet,
       string? filter = null,
       string? select = null,
@@ -49,12 +48,11 @@ public sealed class TDDatabaseTool
   }
 
   [McpServerTool, Description("Fetches a single entity by key from an entity set. Provide key fields as a dictionary (propertyName -> value). Returns the entity as JSON or null if not found.")]
-  public async Task<string> GetByKey(
-      string serviceRootUrl,
-      string entitySet,
-      Dictionary<string, object> key,
-      Dictionary<string, string>? headers = null,
-      CancellationToken cancellationToken = default)
+  public async Task<string> GetByKeyAsync(
+    string entitySet,
+    Dictionary<string, object> key,
+    Dictionary<string, string>? headers = null,
+    CancellationToken cancellationToken = default)
   {
     if (key is null || key.Count == 0) throw new ArgumentException("Key dictionary must not be empty.", nameof(key));
 
@@ -74,12 +72,11 @@ public sealed class TDDatabaseTool
   }
 
   [McpServerTool, Description("Creates (POST) a new entity in an entity set. Provide the entity fields as a dictionary. Returns the created entity (or service response) as JSON.")]
-  public async Task<string> Create(
-      string serviceRootUrl,
-      string entitySet,
-      Dictionary<string, object> data,
-      Dictionary<string, string>? headers = null,
-      CancellationToken cancellationToken = default)
+  public async Task<string> CreateAsync(
+    string entitySet,
+    Dictionary<string, object> data,
+    Dictionary<string, string>? headers = null,
+    CancellationToken cancellationToken = default)
   {
     if (data is null) throw new ArgumentNullException(nameof(data));
     var ctx = CreateContext();
@@ -89,13 +86,12 @@ public sealed class TDDatabaseTool
   }
 
   [McpServerTool, Description("Updates (PATCH/MERGE) an entity in an entity set. Provide the key fields and the fields to change. Returns the updated entity (or service response) as JSON.")]
-  public async Task<string> Update(
-      string serviceRootUrl,
-      string entitySet,
-      Dictionary<string, object> key,
-      Dictionary<string, object> changes,
-      Dictionary<string, string>? headers = null,
-      CancellationToken cancellationToken = default)
+  public async Task<string> UpdateAsync(
+    string entitySet,
+    Dictionary<string, object> key,
+    Dictionary<string, object> changes,
+    Dictionary<string, string>? headers = null,
+    CancellationToken cancellationToken = default)
   {
     if (key is null || key.Count == 0) throw new ArgumentException("Key dictionary must not be empty.", nameof(key));
     if (changes is null) throw new ArgumentNullException(nameof(changes));
@@ -107,12 +103,11 @@ public sealed class TDDatabaseTool
   }
 
   [McpServerTool, Description("Deletes an entity from an entity set. Provide key fields as a dictionary. Returns true if deletion succeeded.")]
-  public async Task<bool> Delete(
-      string serviceRootUrl,
-      string entitySet,
-      Dictionary<string, object> key,
-      Dictionary<string, string>? headers = null,
-      CancellationToken cancellationToken = default)
+  public async Task<bool> DeleteAsync(
+    string entitySet,
+    Dictionary<string, object> key,
+    Dictionary<string, string>? headers = null,
+    CancellationToken cancellationToken = default)
   {
     if (key is null || key.Count == 0) throw new ArgumentException("Key dictionary must not be empty.", nameof(key));
 
@@ -138,8 +133,6 @@ public sealed class TDDatabaseTool
 
     return dict;
   }
-
-  
 
   private bool IsNotFound(WebRequestException ex)
   {
