@@ -5,15 +5,13 @@ Le LLM pourra être Claude Desktop/Code, etc...
 Utilisation possible de Docker MCP Toolkit
 end note
 User->LLM: Prompt
-note over TDMCP
-Le serveur MCP de Technidata
-end note
-LLM->TDMCP: Call
-note over TDMCP
+note over LLM, TDMCP
+Le serveur MCP de Technidata.
 Utilise le protocole MCP pour piloter TDHC
 via des tools, resources, prompts
 Tech : Streamed http+JsonRpc or Stdio
 end note
+LLM->TDMCP: Call
 TDMCP->TDHC_SOAP_Api: Call
 note over TDHC_SOAP_Api
 SOAP API in IIS Server
@@ -26,6 +24,21 @@ données échangées et les secrets
 end note
 Database-->TDHC_SOAP_Api: entities
 TDHC_SOAP_Api-->TDMCP: xml
+TDMCP-->LLM: json
+LLM->LLM: Analyze
+LLM->TDMCP: Recall
+TDMCP->TDHC_OData_Api: Call
+note over TDHC_OData_Api
+OData API in IIS Server
+Tech : http+XML
+end note
+TDHC_OData_Api->Database: Command/Query
+note over Database
+Sécurité : vigilance sur les
+données échangées et les secrets
+end note
+Database-->TDHC_OData_Api: entities
+TDHC_OData_Api-->TDMCP: xml
 TDMCP-->LLM: json
 LLM-->User: Response
 

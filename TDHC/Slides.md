@@ -106,6 +106,8 @@ Utilisation d'une saisie pour demander des informations que notre application se
 
 ## Fonctionnement technique
 
+![LLM_IA_pilotant_TDHC_Full](./Resources/LLM_IA_pilotant_TDHC_Full.png)
+
 # Orchestration pour effectuer plusieurs tâches
 
 ## Objectif Démo
