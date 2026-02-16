@@ -19,26 +19,42 @@ public sealed class TDDatabaseTool
   [McpServerTool, Description("Lists all available entity sets exposed by ConfigurationModelsContext.")]
   public IReadOnlyList<string> ListEntitySets() => _entitySets;
 
-  [McpServerTool, Description("Runs an OData query against an entity set and returns the results as JSON. Supports $filter, $select, $orderby, $top, $skip, and $expand.")]
+  [McpServerTool, Description("Runs an OData query against an entity set and returns the results as JSON. Supports $filter, $select, $orderby, $top, $skip, $expand, and $count.")]
   public async Task<string> QueryAsync(
-      string entitySet,
-      string? filter = null,
-      string? select = null,
-      string? orderBy = null,
-      int? top = 50,
-      int? skip = null,
-      string? expand = null,
-      Dictionary<string, string>? headers = null,
-      CancellationToken cancellationToken = default)
+     string entitySet,
+     string? filter = null,
+     string? select = null,
+     string? orderBy = null,
+     int? top = 50,
+     int? skip = null,
+     string? expand = null,
+     bool count = false,
+     Dictionary<string, string>? headers = null,
+     CancellationToken cancellationToken = default)
   {
     var ctx = CreateContext();
-    var q = ctx.For(entitySet);
+
+    // Detect if entitySet ends with /$count
+    bool isCountRequest = entitySet.EndsWith("/$count", StringComparison.OrdinalIgnoreCase);
+    string actualEntitySet = isCountRequest
+        ? entitySet.Substring(0, entitySet.Length - 7)
+        : entitySet;
+
+    var q = ctx.For(actualEntitySet);
 
     if (!string.IsNullOrWhiteSpace(filter)) q = q.Filter(filter);
     if (!string.IsNullOrWhiteSpace(select)) q = q.Select(select);
     if (!string.IsNullOrWhiteSpace(orderBy)) q = q.OrderBy(orderBy);
     if (!string.IsNullOrWhiteSpace(expand)) q = q.Expand(expand);
     if (skip.HasValue) q = q.Skip(skip.Value);
+
+    // If count is requested, return only the count
+    if (isCountRequest || count)
+    {
+      var countValue = await q.Count().FindScalarAsync<long>().ConfigureAwait(false);
+      return countValue.ToString();
+    }
+
     if (top.HasValue) q = q.Top(top.Value);
 
     // Simple.OData.* doesn't currently take CancellationToken on all methods; this is best-effort.
