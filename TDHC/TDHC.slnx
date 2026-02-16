@@ -3,10 +3,11 @@
     <File Path="LLM_IA_pilotant_TDHC.png" />
     <File Path="LLM_IA_pilotant_TDHC.txt" />
     <File Path="README.md" />
+    <File Path="Slides.md" />
   </Folder>
   <Project Path="TD.PatientManagement.SOAPClient.Tests/TD.PatientManagement.SOAPClient.Tests.csproj" />
   <Project Path="TD.PatientManagement.SOAPClient/TD.PatientManagement.SOAPClient.csproj" />
-  <Project Path="TD.Technical.ODataClient/TD.Technical.ODataClient.csproj" Id="4bce8758-ec62-4798-8022-a0a37788ed73" />
   <Project Path="TD.Technical.ODataClient.Tests/TD.Technical.ODataClient.Tests.csproj" Id="b1281640-9dc9-4085-816b-6a56e6386bac" />
+  <Project Path="TD.Technical.ODataClient/TD.Technical.ODataClient.csproj" Id="4bce8758-ec62-4798-8022-a0a37788ed73" />
   <Project Path="TDMCPApp/TDMCPApp.csproj" />
 </Solution>
