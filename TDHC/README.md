@@ -4,7 +4,7 @@ Fournir un exemple de manipulation de fonctionnalités TDHC à travers l'usage d'u
 
 # Fonctionnement
 
-![LLM (IA) pilotant TDHC](LLM_IA_pilotant_TDHC.png)
+![LLM (IA) pilotant TDHC](./Resources/LLM_IA_pilotant_TDHC.png)
 
 # Intégration
 

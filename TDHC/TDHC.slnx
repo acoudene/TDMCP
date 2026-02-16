@@ -1,8 +1,10 @@
 <Solution>
   <Folder Name="/Solution Items/">
-    <File Path="LLM_IA_pilotant_TDHC.png" />
-    <File Path="LLM_IA_pilotant_TDHC.txt" />
     <File Path="README.md" />
+    <File Path="Resources/Claude_TDHC_TDMCP.gif" />
+    <File Path="Resources/LLM_IA_pilotant_TDHC.png" />
+    <File Path="Resources/LLM_IA_pilotant_TDHC.txt" />
+    <File Path="Resources/PatientDOEJohn.jpg" />
     <File Path="Slides.md" />
   </Folder>
   <Project Path="TD.PatientManagement.SOAPClient.Tests/TD.PatientManagement.SOAPClient.Tests.csproj" />
