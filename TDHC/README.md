@@ -13,18 +13,13 @@ Fournir un exemple de manipulation de fonctionnalités TDHC à travers l'usage d'u
 ### En stdio
 
 Ouvrir `%AppData%\Roaming\Claude\claude_desktop_config.json`
-Puis ajouter : 
+Puis ajouter (la partie à l'intérieur de "mcpServers") : 
 ```
 {
     "mcpServers": {
         "TDMCP": {
-          "command": "dotnet",
-          "args": [
-            "run",
-            "--project",
-            "C:\\Github\\acoudene\\TDMCP\\TDHC\\TDMCPApp"
-          ]
-      }
+          "command": "C:\\Users\\ACE\\OneDrive - technidata-web.com\\Desktop\\TDMCP\\TDMCPApp.exe"
+        }
     }
 }
 ```
@@ -41,6 +36,26 @@ Vérification :
 
 ```
 curl -vk https://localhost:7228/mcp/sse
+```
+
+### Stdio
+
+Editer : `C:\Users\ACE\.claude.json`
+
+Ajouter par exemple (la partie à l'intérieur de "mcpServers") :
+
+```
+"mcpServers": {
+    "TDMCP_Claude_Code": {
+      "command": "C:\\Users\\ACE\\OneDrive - technidata-web.com\\Desktop\\TDMCP_Claude_Code\\TDMCPApp.exe",
+      "args": [
+        "--urls http://*:8080;https://*:8443"
+      ],
+      "env": {
+        "ASPNETCORE_URLS": "http://*:8080;https://*:8443"
+      }
+    }
+}
 ```
 
 # Développement
