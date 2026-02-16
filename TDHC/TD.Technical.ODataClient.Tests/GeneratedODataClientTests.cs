@@ -3,7 +3,7 @@ using System.Reflection;
 using TD.Technical.ODataClient.ConfigModel;
 using Xunit.Sdk;
 
-namespace TD.Technidata.ODataClient.Tests;
+namespace TD.Technical.ODataClient.Tests;
 
 public class GeneratedODataClientTests
 {
