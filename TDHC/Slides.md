@@ -3,8 +3,8 @@
 L'objectif est d'exposer des cas d'usage possibles de nos produits, en l'état, avec pas ou peu de modifications avec un agent IA.
 
 Nous allons découvrir plusieurs cas possibles :
-- **Cas simple** : utilisation d'une saisie afin de récupérer des données patients de notre application TDHC.
-- **Cas modéré** : utilisation d'une saisie pour demander des informations que notre application TDHC seule ne saurait donner directement.
+- **Cas simple** : utilisation d'une saisie utilisateur afin de récupérer des données patients de notre application TDHC.
+- **Cas modéré** : utilisation d'une saisie utilisateur pour demander des informations que notre application TDHC seule ne saurait donner directement.
 - **Cas complexe** : utilisation d'une image pour en extraire des informations afin d'interroger notre application et persister le retour dans une base de données, voir générer et lancer une application web CRUD exploitant ces données.
 
 Enfin, nous verrons les problématiques de sécurité à surveiller tout comme la notion de découverte de ses propres fonctionnalités (adressé prochainement par MCP Toolkit).
@@ -13,7 +13,7 @@ Enfin, nous verrons les problématiques de sécurité à surveiller tout comme l
 
 ## Objectif Démo
 
-Utilisation d'une saisie afin de récupérer des données patients
+Utilisation d'une saisie utilisateur afin de récupérer des données patients
 
 ## Démo
 
@@ -145,7 +145,7 @@ flowchart TB
 
 ## Objectif Démo
 
-Utilisation d'une saisie pour demander des informations que notre application seule ne saurait donner directement.
+Utilisation d'une saisie utilisateur pour demander des informations que notre application seule ne saurait donner directement.
 
 ## Démo
 
