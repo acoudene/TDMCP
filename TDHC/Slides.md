@@ -102,6 +102,10 @@ Il définit :
 
 ## Fonctionnement macroscopique
 
+![LLM IA pilotant TDHC Concept](./Resources/LLM_IA_pilotant_TDHC_Concept.svg)
+
+## Fonctionnement un peu plus technique
+
 ```mermaid
 flowchart TB
   %% LLM pilotant TDHC via MCP (analogie "USB-C")
@@ -137,7 +141,7 @@ flowchart TB
     
 ```
 
-## Fonctionnement un peu plus technique
+## Fonctionnement encore plus technique
 
 ![LLM (IA) pilotant TDHC](./Resources/LLM_IA_pilotant_TDHC.png)
 
