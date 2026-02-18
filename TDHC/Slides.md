@@ -100,7 +100,44 @@ Il définit :
 
 **MCP** : protocole permettant à l’IA d’utiliser des outils externes
 
-## Fonctionnement technique
+## Fonctionnement macroscopique
+
+```mermaid
+flowchart TB
+  %% LLM pilotant TDHC via MCP (analogie "USB-C")
+
+  %% --- Couche 1 : Interaction ---
+  subgraph Interaction
+    U[Utilisateur]
+    LLM[LLM / IA<br/>Claude Desktop, Code, etc.]
+    U[Utilisateur<br/>] -->|Prompt| LLM[LLM / IA<br/> Claude Desktop, Code, etc.]
+  end
+  %% --- Couche 2 : Orchestration ---
+  subgraph Prise USB-C
+    MCP[MCP Server Technidata]
+  end
+  %% --- Couche 3 : Systèmes TDHC ---
+  subgraph TDHC
+    SOAP[TDHC - API SOAP]
+  end
+  %% --- Couche 4 : Données ---
+  subgraph Données
+    DB[(Base de données)]
+  end
+
+  LLM -->|Appels standardisés| MCP
+
+  MCP -->|Traduction & routage| SOAP[API Patient SOAP]
+
+  SOAP -->|Commandes / requêtes| DB[Base de données]
+  DB -->|Données / entités| SOAP
+  SOAP -->|Réponses SOAP XML| MCP
+  MCP -->|Réponses JSON| LLM
+  LLM -->|Réponse| U
+    
+```
+
+## Fonctionnement un peu plus technique
 
 ![LLM (IA) pilotant TDHC](./Resources/LLM_IA_pilotant_TDHC.png)
 
@@ -117,7 +154,59 @@ Utilisation d'une saisie pour demander des informations que notre application se
 `Donne-moi des informations sur l'utilisateur DBL de TDMCP`
 `Donne-moi les 10 premiers patients`
 
-## Fonctionnement technique
+## Fonctionnement macroscopique
+
+```mermaid
+flowchart LR
+  %% Architecture LLM pilotant TDHC via MCP (analogie USB-C)
+
+  %% --- Couche 1 : Interaction ---
+  subgraph Interaction
+    U[Utilisateur]
+    LLM[LLM / IA<br/>Claude Desktop, Code, etc.]
+    U -->|Prompt| LLM
+  end
+
+  %% --- Couche 2 : Orchestration ---
+  subgraph Prise USB-C
+    MCP[MCP Server Technidata]
+  end
+
+  LLM -->|Appels standardisés| MCP
+
+  %% --- Couche 3 : Systèmes TDHC ---
+  subgraph TDHC
+    SOAP[API Patient SOAP]
+    ODATA[API Générique ODATA]
+  end
+
+  MCP -->|Traduction & routage| SOAP
+  SOAP -->|Réponses SOAP XML| MCP
+
+  LLM -->|Analyse| LLM
+  LLM -->|Appels standardisés| MCP
+
+  MCP -->|Traduction & routage| ODATA
+  ODATA -->|Réponses ODATA XML| MCP
+  MCP -->|Réponses JSON| LLM
+
+  %% --- Couche 4 : Données ---
+  subgraph Données
+    DB[(Base de données)]
+  end
+
+  SOAP -->|Commandes / requêtes| DB
+  ODATA -->|Commandes / requêtes| DB
+  DB -->|Données| SOAP
+  DB -->|Données| ODATA
+
+  MCP -->|Réponses JSON| LLM
+  LLM -->|Réponse| U
+
+```
+
+
+## Fonctionnement un peu plus technique
 
 ![LLM_IA_pilotant_TDHC_Full](./Resources/LLM_IA_pilotant_TDHC_Full.png)
 
