@@ -160,7 +160,7 @@ Utilisation d'une saisie utilisateur pour demander des informations que notre ap
 
 ## Fonctionnement macroscopique
 
-![LLM IA pilotant TDHC Concept Full](./Resources/LLM_IA_pilotant_TDHC_Concept_Full.svg)
+![LLM IA pilotant TDHC Concept 2API](./Resources/LLM_IA_pilotant_TDHC_Concept_2API.svg)
 
 
 ## Fonctionnement un peu plus technique
@@ -235,7 +235,9 @@ Utilisation d'une image pour en extraire des informations afin d'interroger notr
 - `Extrait-moi les informations patient de cette image via MarkItDown, extrait les données patient de TDMCP et enregistre ces données dans ma base MongoDB de MCP Toolkit`
 - `Extrait-moi les informations patient des 10 premiers patients de TDMCP, enregistre ces données dans ma base MongoDB de MCP Toolkit et depuis un container Docker, expose une application web type CRUD sur ces patients sur le port 9999 via MCP Toolkit, n'installe rien en local hors container`
 
-## Fonctionnement technique
+## Fonctionnement macroscopique
+
+![LLM IA pilotant TDHC Concept Full](./Resources/LLM_IA_pilotant_TDHC_Concept_Full.svg)
 
 ### Prérequis
 
