@@ -2,4 +2,6 @@
 
 MCP approaches for Technidata
 
-See [TDMCP](./TDMCP/README.md)
+See:
+- [TDMCP](./TDHC/README.md)
+- [TDMCP](./TDHC/Slides.md)
