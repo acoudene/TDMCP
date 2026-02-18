@@ -160,6 +160,11 @@ Utilisation d'une saisie utilisateur pour demander des informations que notre ap
 
 ## Fonctionnement macroscopique
 
+![LLM IA pilotant TDHC Concept Full](./Resources/LLM_IA_pilotant_TDHC_Concept_Full.svg)
+
+
+## Fonctionnement un peu plus technique
+
 ```mermaid
 flowchart LR
   %% Architecture LLM pilotant TDHC via MCP (analogie USB-C)
@@ -209,7 +214,7 @@ flowchart LR
 
 ```
 
-## Fonctionnement un peu plus technique
+## Fonctionnement encore plus technique
 
 ![LLM_IA_pilotant_TDHC_Full](./Resources/LLM_IA_pilotant_TDHC_Full.png)
 

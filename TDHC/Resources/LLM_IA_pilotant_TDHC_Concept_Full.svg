@@ -103,6 +103,10 @@
   <path d="M 770 250 C 900 210, 990 250, 980 330 C 970 410, 340 410, 260 350" fill="none" stroke="#2d6cdf" stroke-width="4" marker-end="url(#arrowBlue)"/>
   <text x="910" y="220" text-anchor="middle" class="label">Réponse</text>
 
+  <!-- LLM self-loop: Analyse -->
+  <path d="M 770 235 C 820 210, 820 170, 760 170 C 710 170, 700 185, 700 190" fill="none" stroke="#2d6cdf" stroke-width="4" marker-end="url(#arrowBlue)"/>
+  <text x="820" y="160" text-anchor="middle" class="label">Analyse &amp; itère</text>
+
   <!-- Divider dashed line -->
   <line x1="90" y1="440" x2="1110" y2="440" stroke="#94a3b8" stroke-width="4" class="dash"/>
 
@@ -118,11 +122,10 @@
   <text x="600" y="665" text-anchor="middle" class="boxText">MCP Server</text>
   <text x="600" y="690" text-anchor="middle" class="boxSub">Technidata</text>
 
-  <!-- Arrow LLM -> MCP (standard calls, unlabeled per request) -->
-  <line xmlns="http://www.w3.org/2000/svg" x1="600" y1="360" x2="600" y2="570" stroke="#EEF530" stroke-width="4" marker-end="url(#arrowGreen)"/>
-  <line xmlns="http://www.w3.org/2000/svg" x1="630" y1="570 " x2="630" y2="360" stroke="#EEF530" stroke-width="4" marker-end="url(#arrowGreen)"/>
-  <text xmlns="http://www.w3.org/2000/svg" x="770" y="530" text-anchor="middle" class="note">Protocole normalisé</text>
-
+  <!-- Bidirectional LLM <-> MCP -->
+  <line x1="600" y1="360" x2="600" y2="570" stroke="#EEF530" stroke-width="4" marker-end="url(#arrowGreen)"/>
+  <line x1="630" y1="570" x2="630" y2="360" stroke="#EEF530" stroke-width="4" marker-end="url(#arrowGreen)"/>
+  <text x="770" y="530" text-anchor="middle" class="note">Protocole normalisé</text>
 
   <!-- Divider dashed line -->
   <line x1="90" y1="740" x2="1110" y2="740" stroke="#94a3b8" stroke-width="3" class="dash"/>
@@ -130,17 +133,26 @@
   <!-- SECTION: TDHC -->
   <rect x="80" y="760" width="1040" height="300" rx="20" fill="#fdebd8"/>
   <text x="200" y="850" text-anchor="middle" class="sectionTitle">TDHC</text>
-
-  <text x="770" y="830" text-anchor="middle" class="note">Traduction &amp; routage</text>
+  <text xmlns="http://www.w3.org/2000/svg" x="600" y="830" text-anchor="middle" class="note">Traduction</text>
+  <text xmlns="http://www.w3.org/2000/svg" x="630" y="860" text-anchor="middle" class="note">&amp; routage</text>
 
   <!-- SOAP box -->
-  <rect x="420" y="910" width="360" height="110" rx="22" fill="#1f5fbf"/>
-  <text x="600" y="960" text-anchor="middle" style="font:700 34px Arial; fill:#ffffff;">API Patient</text>
-  <text x="600" y="995" text-anchor="middle" style="font:700 34px Arial; fill:#ffffff;">SOAP</text>
+  <rect x="240" y="910" width="360" height="110" rx="22" fill="#1f5fbf"/>
+  <text x="420" y="960" text-anchor="middle" style="font:700 34px Arial; fill:#ffffff;">API Patient</text>
+  <text x="420" y="995" text-anchor="middle" style="font:700 34px Arial; fill:#ffffff;">SOAP</text>
 
-  <!-- Arrow MCP -> SOAP -->
-  <line xmlns="http://www.w3.org/2000/svg" x1="600" y1="760" x2="600" y2="910" stroke="#d97706" stroke-width="4" marker-end="url(#arrowOrange)"/>
-  <line xmlns="http://www.w3.org/2000/svg" x1="630" y1="910" x2="630" y2="760" stroke="#d97706" stroke-width="4" marker-end="url(#arrowOrange)"/>
+  <!-- ODATA box (NEW) -->
+  <rect x="600" y="910" width="360" height="110" rx="22" fill="#0ea5e9"/>
+  <text x="780" y="960" text-anchor="middle" style="font:700 30px Arial; fill:#ffffff;">API Générique</text>
+  <text x="780" y="995" text-anchor="middle" style="font:700 34px Arial; fill:#ffffff;">ODATA</text>
+
+  <!-- MCP <-> SOAP -->
+  <line x1="510" y1="760" x2="510" y2="910" stroke="#d97706" stroke-width="4" marker-end="url(#arrowOrange)"/>
+  <line x1="540" y1="910" x2="540" y2="760" stroke="#d97706" stroke-width="4" marker-end="url(#arrowOrange)"/>
+
+  <!-- MCP <-> ODATA (NEW) -->
+  <line x1="690" y1="760" x2="690" y2="910" stroke="#d97706" stroke-width="4" marker-end="url(#arrowOrange)"/>
+  <line x1="720" y1="910" x2="720" y2="760" stroke="#d97706" stroke-width="4" marker-end="url(#arrowOrange)"/>
 
   <!-- Divider dashed line -->
   <line x1="90" y1="1080" x2="1110" y2="1080" stroke="#94a3b8" stroke-width="3" class="dash"/>
@@ -155,10 +167,17 @@
   </g>
   <text x="600" y="1495" text-anchor="middle" class="boxText">Base de données</text>
 
-  <!-- SOAP -> DB and DB -> SOAP -->
-  <line x1="600" y1="1020" x2="600" y2="1270" stroke="#7c3aed" stroke-width="4" marker-end="url(#arrowPurple)"/>
-  <text x="360" y="1150" class="small">Commandes / requêtes</text>
+  <!-- SOAP -> DB and DB -> SOAP (existing) -->
+  <line x1="630" y1="1020" x2="630" y2="1270" stroke="#7c3aed" stroke-width="4" marker-end="url(#arrowPurple)"/>
+  <text x="270" y="1150" class="small">Commandes / requêtes</text>
 
-  <line x1="630" y1="1270" x2="630" y2="1040" stroke="#7c3aed" stroke-width="4" marker-end="url(#arrowPurple)"/>
-  <text x="640" y="1220" class="small">Données / entités</text>
+  <line x1="670" y1="1270" x2="670" y2="1040" stroke="#7c3aed" stroke-width="4" marker-end="url(#arrowPurple)"/>
+  <text x="710" y="1220" class="small">Données / entités</text>
+
+  <!-- ODATA -> DB and DB -> ODATA (NEW) -->
+  <line x1="540" y1="1020" x2="540" y2="1270" stroke="#7c3aed" stroke-width="4" marker-end="url(#arrowPurple)"/>
+
+
+  <line x1="510" y1="1270" x2="510" y2="1040" stroke="#7c3aed" stroke-width="4" marker-end="url(#arrowPurple)"/>
+
 </svg>
