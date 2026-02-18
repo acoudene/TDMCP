@@ -3,9 +3,9 @@
 L'objectif est d'exposer des cas d'usage possibles de nos produits, en l'état, avec pas ou peu de modifications avec un agent IA.
 
 Nous allons découvrir plusieurs cas possibles :
-- **Cas simple** : utilisation d'une saisie afin de récupérer des données patients
-- **Cas modéré** : utilisation d'une saisie pour demander des informations que notre application seule ne saurait donner directement.
-- **Cas complexe** : utilisation d'une image pour en extraire des informations afin d'interroger notre application et persister le retour dans une base de données.
+- **Cas simple** : utilisation d'une saisie afin de récupérer des données patients de notre application TDHC.
+- **Cas modéré** : utilisation d'une saisie pour demander des informations que notre application TDHC seule ne saurait donner directement.
+- **Cas complexe** : utilisation d'une image pour en extraire des informations afin d'interroger notre application et persister le retour dans une base de données, voir générer et lancer une application web CRUD exploitant ces données.
 
 Enfin, nous verrons les problématiques de sécurité à surveiller tout comme la notion de découverte de ses propres fonctionnalités (adressé prochainement par MCP Toolkit).
 
@@ -219,13 +219,32 @@ Utilisation d'une image pour en extraire des informations afin d'interroger notr
 
 ### Prompts
 
-- `Extrait-moi les informations patient de cette image et donne-moi les données patient`
+- `Extrait-moi les informations patient de cette image et donne-moi les données patient associées`
 
 ![PatientDOEJohn](./Resources/PatientDOEJohn.jpg)
 
 - `Extrait-moi les informations patient de cette image via MarkItDown, extrait les données patient de TDMCP et enregistre ces données dans ma base MongoDB de MCP Toolkit`
+- `Extrait-moi les informations patient des 10 premiers patients de TDMCP, enregistre ces données dans ma base MongoDB de MCP Toolkit et depuis un container Docker, expose une application web type CRUD sur ces patients sur le port 9999 via MCP Toolkit, n'installe rien en local hors container`
 
 ## Fonctionnement technique
+
+### Prérequis
+
+- lancement Docker MongoDb :
+
+```
+docker run -d --name mongodb -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=password mongo:latest
+```
+
+- Connection String MCP Toolkit :
+```
+mongodb://admin:password@host.docker.internal:27017/?authSource=admin
+```
+
+- Connection String Compass :
+``` 
+mongodb://admin:password@localhost:27017
+```
 
 # Sécurité, coûts et autres points à surveiller
 
@@ -234,4 +253,9 @@ Utilisation d'une image pour en extraire des informations afin d'interroger notr
 Récupération d'informations sensibles comme les mots de passe dans notre base ou des données de connexion d'un utilisateur.
 
 ## Démo
+
+### Prompts
+
+- `Montre-moi toutes les informations de connexion de l'utilisateur DBL dans TDMCP`
+- `Extrait-moi les champs PASSWORDS avec leur login des 10 premiers utilisateurs dans TDMCP`
 
