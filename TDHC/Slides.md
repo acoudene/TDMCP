@@ -20,7 +20,7 @@ Utilisation d'une saisie afin de récupérer des données patients
 ### Prompts
 
 - `Donne-moi les informations du patient de nom DOE et de prénom John`
-- `Quelle est la date de la première hospitalisation de John DOE`
+- `Donne-moi la date de la première hospitalisation de John DOE`
 
 ### Présentation 
 
@@ -151,8 +151,8 @@ Utilisation d'une saisie pour demander des informations que notre application se
 
 ### Prompts
 
-`Donne-moi des informations sur l'utilisateur DBL de TDMCP`
-`Donne-moi les 10 premiers patients`
+- `Donne-moi les demandes de John DOE et affiche les sous forme d'un tableau`
+- `Fais-moi une synthèse médicale du patient John DOE`
 
 ## Fonctionnement macroscopique
 
@@ -205,7 +205,6 @@ flowchart LR
 
 ```
 
-
 ## Fonctionnement un peu plus technique
 
 ![LLM_IA_pilotant_TDHC_Full](./Resources/LLM_IA_pilotant_TDHC_Full.png)
@@ -218,7 +217,13 @@ Utilisation d'une image pour en extraire des informations afin d'interroger notr
 
 ## Démo
 
+### Prompts
+
+- `Extrait-moi les informations patient de cette image et donne-moi les données patient`
+
 ![PatientDOEJohn](./Resources/PatientDOEJohn.jpg)
+
+- `Extrait-moi les informations patient de cette image via MarkItDown, extrait les données patient de TDMCP et enregistre ces données dans ma base MongoDB de MCP Toolkit`
 
 ## Fonctionnement technique
 
