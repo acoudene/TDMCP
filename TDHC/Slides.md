@@ -2,7 +2,7 @@
 
 L'objectif est d'exposer des cas d'usage possibles de nos produits, en l'état, avec pas ou peu de modifications avec un agent IA.
 
-Nous allons découvrir 3 cas possibles :
+Nous allons découvrir plusieurs cas possibles :
 - **Cas simple** : utilisation d'une saisie afin de récupérer des données patients
 - **Cas modéré** : utilisation d'une saisie pour demander des informations que notre application seule ne saurait donner directement.
 - **Cas complexe** : utilisation d'une image pour en extraire des informations afin d'interroger notre application et persister le retour dans une base de données.
@@ -17,12 +17,20 @@ Utilisation d'une saisie afin de récupérer des données patients
 
 ## Démo
 
-- Prompt : _"Donne-moi les informations du patient de nom DOE et de prénom John"_
+### Prompts
+
+- `Donne-moi les informations du patient de nom DOE et de prénom John`
+- `Quelle est la date de la première hospitalisation de John DOE`
+
+### Présentation 
+
 - Présentation de TDHC avec une recherche de patient John DOE dans "Patient Search".
 - Présentation de Claude Desktop à côté.
 - Comparaison de données entre les 2.
 
-Vidéo secours (si problème technique) :
+### Vidéo
+
+_(si problème technique)_
 
 ![Claude_TDHC_TDMCP](./Resources/Claude_TDHC_TDMCP.gif)
 
@@ -103,6 +111,11 @@ Il définit :
 Utilisation d'une saisie pour demander des informations que notre application seule ne saurait donner directement.
 
 ## Démo
+
+### Prompts
+
+`Donne-moi des informations sur l'utilisateur DBL de TDMCP`
+`Donne-moi les 10 premiers patients`
 
 ## Fonctionnement technique
 
