@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <RootNamespace>TD.PatientManagement.SOAPClient.Playwright</RootNamespace>
+    <AssemblyName>TD.PatientManagement.SOAPClient.Playwright</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- xUnit v2 — cohérent avec les autres projets de test de la solution -->
+    <PackageReference Include="Microsoft.NET.Test.Sdk"          Version="17.14.1"  />
+    <PackageReference Include="xunit"                           Version="2.9.3"    />
+    <PackageReference Include="xunit.runner.visualstudio"       Version="3.1.5"    >
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector"              Version="6.0.4"    >
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+
+    <!-- Playwright pour xUnit — fournit PageTest, BrowserTest, ContextTest, etc. -->
+    <PackageReference Include="Microsoft.Playwright.Xunit"      Version="1.58.0"   />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Référence au client WCF SOAP généré -->
+    <ProjectReference Include="..\TD.PatientManagement.SOAPClient\TD.PatientManagement.SOAPClient.csproj" />
+  </ItemGroup>
+
+  <!--
+    Installation automatique des navigateurs Playwright au premier build.
+    Nécessite PowerShell 7+ (pwsh). Pour CI Linux : dotnet playwright install chromium
+  -->
+  <!--<Target Name="InstallPlaywrightBrowsers" AfterTargets="Build">
+    <Exec Command="pwsh -Command &quot;$(NuGetPackageRoot)microsoft.playwright/1.58.0/build/playwright.ps1 install chromium&quot;"
+          IgnoreExitCode="true"
+          StandardOutputImportance="low" />
+  </Target>-->
+
+</Project>

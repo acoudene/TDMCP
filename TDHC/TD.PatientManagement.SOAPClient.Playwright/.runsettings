@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Fichier de configuration pour xUnit + Playwright (Microsoft.Playwright.Xunit).
+
+  ──────────────────────────────────────────────────────────────────────────────
+  EXEMPLES D'EXÉCUTION
+  ──────────────────────────────────────────────────────────────────────────────
+
+  # Tous les tests de lecture (les tests Write sont Skip par défaut)
+  dotnet test --settings .runsettings
+
+  # Cibler une classe précise
+  dotnet test --filter "FullyQualifiedName~ConnectivityTests"
+  dotnet test --filter "FullyQualifiedName~PatientSearchTests"
+  dotnet test --filter "FullyQualifiedName~PatientDetailsTests"
+  dotnet test --filter "FullyQualifiedName~PatientVisitTests"
+  dotnet test --filter "FullyQualifiedName~RequestSearchTests"
+
+  # Avec rapport HTML (nécessite dotnet-reportgenerator-globaltool)
+  dotnet test --settings .runsettings --logger "html;LogFileName=TestResults/report.html"
+
+  # Debug avec navigateur visible
+  PLAYWRIGHT_HEADLESS=false dotnet test --settings .runsettings
+  ──────────────────────────────────────────────────────────────────────────────
+-->
+<RunSettings>
+
+  <!-- ── Variables d'environnement ──────────────────────────────────────────── -->
+  <RunConfiguration>
+    <EnvironmentVariables>
+      <!-- Navigateur Playwright headless (false pour debug visuel) -->
+      <PLAYWRIGHT_HEADLESS>true</PLAYWRIGHT_HEADLESS>
+
+      <!--
+        Surcharge l'URL du service SOAP.
+        <SOAP_ENDPOINT_URL>https://tdhc-app-dev-2.technidata.net:38431/TDHC9XACE/PatientManagement/PatientManagementService.svc</SOAP_ENDPOINT_URL>
+      -->
+
+      <!--
+        Identifiants de référence.
+        <TEST_PATIENT_ID>12345</TEST_PATIENT_ID>
+        <TEST_HOSPITALIZATION_ID>67890</TEST_HOSPITALIZATION_ID>
+      -->
+    </EnvironmentVariables>
+    <ResultsDirectory>TestResults</ResultsDirectory>
+  </RunConfiguration>
+
+  <!-- ── Configuration Playwright ────────────────────────────────────────────── -->
+  <Playwright>
+    <BrowserName>chromium</BrowserName>
+    <ExpectTimeout>10000</ExpectTimeout>
+    <LaunchOptions>
+      <Headless>true</Headless>
+    </LaunchOptions>
+  </Playwright>
+
+  <!-- ── Configuration xUnit ─────────────────────────────────────────────────── -->
+  <!--
+    Par défaut xUnit v2 exécute les classes en parallèle mais les tests
+    dans une classe séquentiellement.
+    On désactive le parallélisme entre classes pour éviter les conflits SOAP.
+  -->
+  <xUnit>
+    <MaxParallelThreads>1</MaxParallelThreads>
+  </xUnit>
+
+</RunSettings>

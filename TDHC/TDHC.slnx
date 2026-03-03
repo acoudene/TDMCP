@@ -16,6 +16,7 @@
     <File Path="Resources/TDHC_IA_MCP_TDHC.pptx" />
     <File Path="Slides.md" />
   </Folder>
+  <Project Path="TD.PatientManagement.SOAPClient.Playwright/TD.PatientManagement.SOAPClient.Playwright.csproj" />
   <Project Path="TD.PatientManagement.SOAPClient.Tests/TD.PatientManagement.SOAPClient.Tests.csproj" />
   <Project Path="TD.PatientManagement.SOAPClient/TD.PatientManagement.SOAPClient.csproj" />
   <Project Path="TD.Technical.ODataClient.Tests/TD.Technical.ODataClient.Tests.csproj" Id="b1281640-9dc9-4085-816b-6a56e6386bac" />
